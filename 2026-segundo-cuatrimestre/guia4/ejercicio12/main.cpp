@@ -23,7 +23,7 @@ int main()
 
     //****** SOLO RESUELTO EL PUNTO A. EL RESTO DE TAREA **********
 
-    int n, pos, neg, cero;
+    int n, pos, neg, cero, orden, impar, con_impar = 0;
 
     //-2, 0, 0, 1, 2
     //0, 0, 0, 0, 0
@@ -35,11 +35,13 @@ int main()
         pos = 0;
         neg = 0;
         cero = 0;
+        orden = 0;
 
         for(int y = 0; y < 5; y++){
             cout << "Ingrese un nro: ";
             cin >> n;
 
+            //PUNTO A
             if(n>0){
                 pos++;
             }else if(n<0){
@@ -48,14 +50,40 @@ int main()
                 cero++;
             }
 
+            //PUNTO B
+            if(n%2 != 0){
+                impar = n;
+                orden = y + 1;
+
+                //PUNTO C
+                con_impar++;
+            }
+
+
         }//fin sublote o grupo
+
+
+        // PUNTO A
         cout << "GRUPO: " << x + 1 << endl;
         cout << "La cantidad de positivos es: " << pos << endl;
         cout << "La cantidad de negativos es: " << neg << endl;
         cout << "La cantidad de ceros es: " << cero << endl;
 
+        //PUNTO B
+        if(orden != 0){
+            cout << "El ultimo impar encontrado es: " << impar << endl;
+            cout << "Y fue encontrado en la posicion: " << orden << endl;
+        }else{
+            cout << "Grupo sin impares. " << endl;
+        }
 
-    }
+
+    }// cierre for externo
+
+    //PUNTO C
+    cout << "La cantidad de impares totales es: " << con_impar << endl;
+
+
 
     return 0;
 }
