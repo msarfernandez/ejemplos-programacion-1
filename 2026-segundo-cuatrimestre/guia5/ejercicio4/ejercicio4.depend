@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1791419769 source:c:\users\max\desktop\ejemplos-programacion-1\2026-segundo-cuatrimestre\guia5\ejercicio4\main.cpp
+	<iostream>
+	"funciones.h"
+
+1791419886 c:\users\max\desktop\ejemplos-programacion-1\2026-segundo-cuatrimestre\guia5\ejercicio4\funciones.h
+	<string.h>
+
+1791419878 source:c:\users\max\desktop\ejemplos-programacion-1\2026-segundo-cuatrimestre\guia5\ejercicio4\funciones.cpp
+
