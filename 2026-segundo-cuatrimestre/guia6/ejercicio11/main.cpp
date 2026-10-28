@@ -17,6 +17,16 @@ float buscar_precio(int pago, int plan, int codigos[], float precios_contado[], 
     }
 }
 
+int buscar_indice_plan(int plan, int v_plan[20]){
+    for(int x = 0; x < 20; x++){
+        if(plan == v_plan[x]){
+            //lo encontré en ESA X
+            return x;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
 
@@ -29,10 +39,13 @@ int main()
         //Precio Tarjeta
     int codigo;
     float precioContado, precioTarjeta;
+    float acuContado = 0, acuTarjeta = 0;
 
     int v_codigos[20];
     float v_precios_contado[20];
     float v_precios_tarjeta[20];
+
+    int v_punto_b[20] = {};//acu de personas por cada plan
 
     for(int x=0; x<20; x++){
         cout << "Ingrese el codigo de plan: " << endl;
@@ -72,9 +85,20 @@ int main()
         //acumulo recaudacion total:
         //con el codigo de plan y el codigo de pago
         //averiguo el precio correspondiente.
-        float precio = buscar_precio(codigoPago, codigoPlan, v_codigos, v_precios_contado, v_precios_tarjeta);
+        //float precio = buscar_precio(codigoPago, codigoPlan, v_codigos, v_precios_contado, v_precios_tarjeta);
+        //recaudacionTotal += precio*cantidad;
 
-        recaudacionTotal += precio*cantidad;
+        //BUSCO INDICE DE PLAN
+        int indice_plan = buscar_indice_plan(codigoPlan, v_codigos);
+
+        //ACUMULO PARA PUNTO A
+        if(pago == 1){
+            acuContado += v_precios_contado[indice_plan]*cantidad;
+        }else{
+            acuTarjeta += v_precios_tarjeta[indice_plan]*cantidad;
+        }
+
+        v_punto_b[indice_plan] += cantidad;
 
         //acá pedimos nuevo registro
         cout << "Ingrese el nro de local: " << endl;
