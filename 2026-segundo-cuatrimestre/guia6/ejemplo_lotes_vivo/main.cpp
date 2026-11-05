@@ -38,14 +38,16 @@ int main()
     float precio_hora, monto_jornada;
 
     float v_punto_a[30] = {};
+    float v_punto_b[15] = {};
+    int v_punto_c[30] = {};
 
+    cout << "Ingrese el nro de empleado: " << endl;
+    cin >> nro_empleado;
     cout << "Ingrese el mes de trabajo: " << endl;
     cin >> mes;
+    cout << "Ingrese las horas trabajadas: " << endl;
+    cin >> cantidad_horas;
     while(mes != 13){
-        cout << "Ingrese el nro de empleado: " << endl;
-        cin >> nro_empleado;
-        cout << "Ingrese las horas trabajadas: " << endl;
-        cin >> cantidad_horas;
 
         //CALCULAR PUNTO A
 
@@ -66,11 +68,46 @@ int main()
         monto_jornada = cantidad_horas * precio_hora;
 
         v_punto_a[indice_empleado] += monto_jornada;
+        v_punto_c[indice_empleado] += cantidad_horas;
 
+        //PUNTO B
+        //Total abonado en sueldos discriminado por cada una de
+        //  las 15 categorías.
+
+        //CALCULAR PUNTO B
+        v_punto_b[indice_categoria] += monto_jornada;
+
+
+
+        cout << "Ingrese el nro de empleado: " << endl;
+        cin >> nro_empleado;
         cout << "Ingrese el mes de trabajo: " << endl;
         cin >> mes;
+        cout << "Ingrese las horas trabajadas: " << endl;
+        cin >> cantidad_horas;
     }
 
+    //MOSTRAR PUNTO A
+    cout << endl << "LISTA DE EMPLEADOS Y SUELDOS: " << endl;
+    for(int x = 0; x<30 ; x++){
+        cout << "EMPLEADO: " << v_empleados[x] << " SUELDO: " << v_punto_a[x] << endl;
+
+    }
+    //MOSTRAR PUNTO B
+
+    //MOSTRAR PUNTO C
+    int v_indices[30], indice;
+    ordenar_sueldos(v_punto_a, v_indices);
+
+    cout << endl << "LISTADO ORDENADO: " << endl;
+    for(int x=0;x<10;x++){
+        indice = v_indices[x];
+        cout << "EMPLEADO: " << v_empleados[indice];
+        cout << " NRO EMPLEADO: " << v_nro_empleado[indice];
+        cout << " HORAS TRABAJADAS: " << v_punto_c[indice];
+        cout << " TOTAL ANUAL: " << v_punto_a[x] << endl;
+
+    }
 
 
     return 0;

@@ -26,8 +26,8 @@ void cargar_empleados(string nombres[], int nros_empleado[], int categorias_empl
     int cat_empleado;
     for(int x = 0; x<30; x++){
         cout << "Ingrese el apellido y nombre del empleado: " << endl;
-        getline(cin, nombre_empleado);
         cin.ignore();
+        getline(cin, nombre_empleado);
         //cin.getline(nombre_empleado);
         nombres[x] = nombre_empleado;
         cout << "Ingrese nro empleado: " << endl;
@@ -65,6 +65,31 @@ int buscar(int codigo, int v_codigos[], int cantidad){
         }
     }
     return -1;
+}
+
+void ordenar_sueldos(float v_punto_a[], int v_indices[]){
+    for(int x=0; x<30;x++){
+        v_indices[x] = x;
+    }
+    float aux;
+    int ind;
+    for(int x = 0;x<30;x++){
+        for(int y=0;y<29;y++){
+
+            if(v_punto_a[y]<v_punto_a[y+1]){
+                aux = v_punto_a[y];
+                v_punto_a[y] = v_punto_a[y+1];
+                v_punto_a[y+1] = aux;
+
+                ind = v_indices[y];
+                v_indices[y] = v_indices[y+1];
+                v_indices[y+1] = ind;
+            }
+
+
+        }
+    }
+
 }
 
 
